@@ -1,0 +1,4 @@
+node_modules/
+dailynotes.js
+.env
+package-lock.json

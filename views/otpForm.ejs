@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="icon" href="/images/Screenshot_2024-05-18_163234-removebg-preview.png" type="image/png">
+    <link rel="stylesheet" href="/otpForm.css">
+</head>
+<body>
+    <%- include('./message.ejs', { success: success, error: error }) %>
+
+<div class="otp-container">
+    <h2>OTP Verification</h2>
+    <form action="/otp/<%- email %>" method="POST" class="otp-form">
+        <div class="otp-input-container">
+            <input type="text" maxlength="4" placeholder="Enter OTP" class="otp-input"  name="otp" required>
+        </div>
+        <button type="submit" class="submit-btn">Verify OTP</button>
+    </form>
+</div>
+
+</body>
+</html>

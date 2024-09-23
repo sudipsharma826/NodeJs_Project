@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/home.css"> <!-- Ensure correct path -->
+    <link rel="icon" href="/images/Screenshot_2024-05-18_163234-removebg-preview.png" type="image/png">
+</head>
+<body>
+    <%- include('./message.ejs', { success ,error }) %>
+
+    <!-- Importing the Navbar -->
+    <%- include('./navbar.ejs') %> <!-- Ensure correct path -->
+    <!-- Card Section -->
+    <div class="card-container">
+        <% if (blogs && blogs.length > 0) { %>
+            <% blogs.forEach(blog => { %>
+                <div class="card">
+                    <img src="/images/<%= blog.image %>" alt="<%= blog.title %>" onerror="this.src='/images/default.png'"> <!-- Fallback image -->
+                    <div class="card-title"><%= blog.title %></div>
+                    <div class="card-subtitle"><%= blog.subtitle %></div>
+                    <div class="card-description"><%= blog.description %></div>
+                    <p>Author: <%= blog.register?.username || 'Unknown' %></p>
+
+                    <div class="read-more-btn">
+                        <a href="/blog/<%= blog.id %>">Read More</a>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No blogs available at the moment.</p>
+        <% } %>
+    </div>
+</body>
+</html>

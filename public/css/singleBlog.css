@@ -1,0 +1,134 @@
+/* Blog Page Scoped Styling */
+.blog-page {
+    /* Body Styling */
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding-top: 100px; /* Space for the navbar */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* Isolating the Blog Section */
+.blog-page .blog-card {
+    width: 90%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+/* Blog Image Styling */
+.blog-page .blog-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 5px solid #ff6600;
+}
+
+/* Blog Content Padding */
+.blog-page .blog-content {
+    padding: 30px;
+}
+
+/* Blog Title */
+.blog-page .blog-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Blog Subtitle */
+.blog-page .blog-subtitle {
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Blog Description */
+.blog-page .blog-description {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Author and Email Styling */
+.blog-page .blog-card p {
+    color: #777;
+    font-size: 16px;
+    margin: 5px 0;
+    text-align: center;
+}
+
+/* Button Section */
+.blog-page .blog-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: #f5f5f5;
+}
+
+/* Edit and Delete Buttons */
+.blog-page .blog-actions .delete-button, .blog-page .blog-actions .edit-button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-page .blog-actions .edit-button {
+    background-color: #00b894;
+}
+
+.blog-page .blog-actions .delete-button:hover {
+    background-color: #cc0000;
+}
+
+.blog-page .blog-actions .edit-button:hover {
+    background-color: #009c7e;
+}
+
+/* Responsive Design for Blog Section */
+@media (max-width: 768px) {
+    .blog-page .blog-content {
+        padding: 20px;
+    }
+
+    .blog-page .blog-title {
+        font-size: 28px;
+    }
+
+    .blog-page .blog-subtitle {
+        font-size: 20px;
+    }
+
+    .blog-page .blog-description {
+        font-size: 16px;
+    }
+
+    .blog-page .blog-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .blog-page .blog-actions .delete-button, .blog-page .blog-actions .edit-button {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}

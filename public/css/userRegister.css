@@ -1,0 +1,109 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://example.com/your-3d-image.jpg'); /* Replace with your 3D image URL */
+    background-size: cover;
+    background-position: center;
+    /* Removed blur */
+}
+
+.register-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    position: relative;
+    z-index: 1; /* Ensure this is on top */
+}
+
+h2 {
+    text-align: center;
+    color: #00796b;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #004d40;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #00796b;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus {
+    border-color: #004d40;
+    outline: none;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.register-btn:hover {
+    background-color: #004d40;
+    transform: scale(1.05);
+}
+
+.google-login-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.google-login-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #db4437;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.google-login-btn:hover {
+    background-color: #c13524;
+    transform: scale(1.05);
+}
+
+h3 {
+    margin: 20px 0;
+    text-align: center;
+    color: #00796b;
+    font-size: 20px;
+}

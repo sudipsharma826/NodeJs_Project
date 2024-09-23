@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="home.css"><!-- External CSS Linking -->
+    
+    <!-- The home.css file is not directly accessible by default. 
+    To make it accessible, we need to serve the static files using Express:
+    app.use(express.static('public')); 
+    or 
+    app.use(express.static('public/css')); // This is more secure.
+    
+    In the href attribute, we didn't provide the full path, but it's still accessible because
+    app.use() handles the location, so only the filename is needed here. -->
+</head>
+<body>
+     <h1>Welcome to the Index Page</h1>
+     <%= obj1.name %> <!-- Embedded JavaScript to render dynamic content -->
+</body>
+</html>

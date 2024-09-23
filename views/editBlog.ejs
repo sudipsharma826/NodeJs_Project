@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog - <%- blog.id %></title>
+    <link rel="stylesheet" href="/editBlog.css">
+    <link rel="icon" href="/images/Screenshot_2024-05-18_163234-removebg-preview.png" type="image/png">
+    <style>
+        .image-preview {
+            margin-top: 10px;
+        }
+        .image-preview img {
+            max-width: 150px;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <%- include('./message.ejs', { success: success, error: error }) %>
+
+<div class="form-container">
+    <form action="/edit/<%- blog.id %>/<%- blog.title %>" method="post" enctype="multipart/form-data">
+        <h1 class="form-title">Submit Your Details</h1>
+        <h3 class="form-subtitle">We'd love to hear from you!</h3>
+
+        <label for="title">Title</label>
+        <input type="text" id="title" value="<%- blog.title %>" name="title" required>
+
+        <label for="subtitle">Subtitle</label>
+        <input type="text" id="subtitle" value="<%- blog.subtitle %>" name="subtitle" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" required><%- blog.description %></textarea>
+
+        <label>Current Image:</label>
+        <img src="/images/<%= blog.image %>" alt="Current image" style="max-width: 150px;">
+
+        <label for="image">Upload New Image</label>
+        <input type="file" id="image" name="image" onchange="previewImage(event)">
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

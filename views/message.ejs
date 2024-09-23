@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Flash Messages Container */
+        .flash-messages {
+            position: fixed;
+            top: 80px;
+            right: 8px;
+            z-index: 1000;
+            max-width: 300px;
+        }
+
+        /* Flash Message Styling */
+        .flash-message {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+        }
+
+        /* Success Message Styling */
+        .flash-message.success {
+            background-color: #28a745; /* Green */
+        }
+
+        /* Error Message Styling */
+        .flash-message.error {
+            background-color: #dc3545; /* Red */
+        }
+
+        /* Close Button Styling */
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        /* Close Button Hover Effect */
+        .close-btn:hover {
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <!-- Flash Messages Container -->
+    <div id="flash-messages" class="flash-messages">
+        <% if (success && success.length > 0) { %>
+            <div class="flash-message success">
+                <span><%= success %></span>
+                <button class="close-btn">&times;</button>
+            </div>
+        <% } %>
+
+        <% if (error && error.length > 0) { %>
+            <div class="flash-message error">
+                <span><%= error %></span>
+                <button class="close-btn">&times;</button>
+            </div>
+        <% } %>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to automatically dismiss flash messages after 5 seconds
+            const autoDismissMessages = () => {
+                const flashMessages = document.querySelectorAll('.flash-message');
+                flashMessages.forEach(message => {
+                    setTimeout(() => {
+                        message.style.opacity = '0';
+                        setTimeout(() => {
+                            message.remove();
+                        }, 500); // Wait for the fade-out transition to complete
+                    }, 3000); // Auto-dismiss after 5 seconds
+                });
+            };
+
+            // Function to handle close button click
+            const setupCloseButtons = () => {
+                const closeButtons = document.querySelectorAll('.close-btn');
+                closeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const message = button.parentElement;
+                        message.style.opacity = '0';
+                        setTimeout(() => {
+                            message.remove();
+                        }, 600); // Wait for the fade-out transition to complete
+                    });
+                });
+            };
+
+            // Initialize functions
+            autoDismissMessages();
+            setupCloseButtons();
+        });
+    </script>
+</body>
+</html>

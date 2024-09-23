@@ -1,0 +1,102 @@
+<nav class="navbar">
+    <a href="https://www.sudipsharma.com.np/search/label/Node%20Js" class="logo">Sudip Sharma Blog</a>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <% if (isLoggedIn) { %> <!-- Use <% %> for logic -->
+            <li><a href="/create">Create Blog</a></li>
+            <li><a href="/myBlogs">My Blogs</a></li>
+            <li><a href="/logout">LogOut</a></li>
+        <% } else { %> <!-- Correct EJS syntax for else -->
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+        <% } %> <!-- Close the if-else block -->
+    </ul>
+</nav>
+<style>
+/* Style for the logo link */
+.navbar .logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff6600; /* Brighter color for the logo */
+    text-decoration: none;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    transition: color 0.3s ease; /* Smooth color transition */
+    letter-spacing: 1px;
+}
+
+/* Add hover effect for logo */
+.navbar .logo:hover {
+    color: #ff3300; /* Slight color change on hover */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f2937; /* Darker background for contrast */
+    padding: 15px 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 8px;
+}
+
+/* Style for nav links */
+.navbar .nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 30px; /* Larger gap for spacing */
+}
+
+/* Style for each nav item */
+.navbar .nav-links li {
+    display: inline;
+}
+
+/* Style for each nav link */
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #ffffff; /* White text color for better readability */
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 15px;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+}
+
+/* Hover effect for nav links */
+.navbar .nav-links a:hover {
+    color: #ff6600; /* Orange hover color */
+    background-color: rgba(255, 255, 255, 0.1); /* Background hover effect */
+    transform: translateY(-3px); /* Lifts link on hover */
+}
+
+/* Add an active link style */
+.navbar .nav-links a.active {
+    background-color: #ff6600; /* Highlight the active page */
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack the navbar in smaller screens */
+        padding: 20px;
+    }
+
+    .navbar .nav-links {
+        flex-direction: column;
+        gap: 15px; /* Reduce the gap between items */
+    }
+
+    .navbar .nav-links a {
+        font-size: 20px; /* Increase font size for better readability */
+        padding: 15px;
+        text-align: center; /* Center links */
+    }
+}
+
+</style>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creater Blog</title>
+    <link rel="stylesheet" href="createBlog.css">
+    <link rel="icon" href="/images/Screenshot_2024-05-18_163234-removebg-preview.png" type="image/png">
+</head>
+<body>
+    <%- include ('./navbar.ejs') %>
+    <%- include('./message.ejs', { success ,error }) %>
+    <div class="form-container">
+        <h1 class="form-title">Hi, Post Your Blog</h1>
+        <!--<form class="form" action="/create" method="post">  It handle only testual data but to handle the file type data too we need to add  enctype="multipart/form-data"-->
+            <form class="form" action="/create" method="post" enctype="multipart/form-data">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" id="title" name="title" class="form-input" placeholder="Enter the title" required>
+
+            <label for="subtitle" class="form-label">Subtitle:</label>
+            <input type="text" id="subtitle" name="subtitle" class="form-input" placeholder="Enter the subtitle" required>
+
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" class="form-textarea" placeholder="Enter the description" required></textarea>
+
+            <label for="image" class="form-label">Image Upload:</label>
+            <input type="file" id="image" name="image" class="form-input" accept="image/*" required>
+
+            <button type="submit" class="form-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

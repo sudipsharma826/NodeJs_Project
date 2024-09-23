@@ -1,0 +1,93 @@
+/* resetForm.css */
+
+.reset-body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f9f9f9, #e1e5ee);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .password-reset-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .password-reset-container:hover {
+    transform: translateY(-10px);
+  }
+  
+  .password-reset-container h2 {
+    color: #333;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  
+  .password-reset-container p {
+    font-size: 16px;
+    color: #444;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .password-reset-container p:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .password-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f1f1f1;
+    transition: border-color 0.3s ease;
+  }
+  
+  .password-input:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+  }
+  
+  .reset-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .reset-button:hover {
+    background-color: #218838;
+  }
+  
+  .reset-button:focus {
+    outline: none;
+  }
+  
+  @media (max-width: 500px) {
+    .password-reset-container {
+      width: 90%;
+      padding: 30px;
+    }
+  }
+  

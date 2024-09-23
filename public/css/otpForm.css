@@ -1,0 +1,87 @@
+/* Global Styles to avoid conflicts */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fa;
+}
+
+.otp-container {
+    max-width: 400px;
+    margin: 100px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 3px solid #1e90ff;
+}
+
+.otp-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #1e90ff;
+    font-weight: 600;
+}
+
+.otp-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.otp-input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.otp-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.otp-input:focus {
+    border-color: #1e90ff;
+    box-shadow: 0 0 8px rgba(30, 144, 255, 0.3);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .otp-container {
+        margin: 50px auto;
+        padding: 15px;
+    }
+    
+    .otp-input {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .submit-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
