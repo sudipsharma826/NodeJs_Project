@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="/home.css"> <!-- Ensure correct path -->
-    <link rel="icon" href="/images/Screenshot_2024-05-18_163234-removebg-preview.png" type="image/png">
+    <link rel="icon" href="https://res.cloudinary.com/diuy2xilf/image/upload/v1727609897/Screenshot_2024-05-18_163234-removebg-preview_l3x0bf.png" type="image/png">
 </head>
 <body>
     <%- include('./message.ejs', { success ,error }) %>
@@ -17,7 +17,7 @@
         <% if (blogs && blogs.length > 0) { %>
             <% blogs.forEach(blog => { %>
                 <div class="card">
-                    <img src="/images/<%= blog.image %>" alt="<%= blog.title %>" onerror="this.src='/images/default.png'"> <!-- Fallback image -->
+                    <img src="<%= blog.image %>" alt="<%= blog.title %>" onerror="this.src='/images/default.png'"> <!-- Fallback image -->
                     <div class="card-title"><%= blog.title %></div>
                     <div class="card-subtitle"><%= blog.subtitle %></div>
                     <div class="card-description"><%= blog.description %></div>

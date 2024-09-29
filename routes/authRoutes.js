@@ -5,8 +5,10 @@ const passport = require('passport');
 const { google } = require('../middleware/passport');
 
 //User Profile Image Hadler ]
-const { multer, storage } = require('../middleware/multerConfig');
-const upload = multer({ storage });
+// const { multer, storage } = require('../middleware/multerConfig');
+// const upload = multer({ storage }); ( Previous code to store the images in the local server)
+//New Code to store the images in the cloudinary server
+const {upload} = require('../middleware/multerConfig');
 
 //Register Routes
 router.route('/register').get(registerRender).post(upload.single('image'),registerUser);

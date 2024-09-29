@@ -15,7 +15,8 @@ exports.registerRender = (req, res) => {
 exports.registerUser = async (req, res) => {
     try {
         const { username, email, password } = req.body;
-        const image = req.file ? req.file.filename : null;
+        const image = req.file ? req.file.path : null; // Get the image path from the uploaded file
+
 
         const existingUser = await registers.findOne({ where: { email } });
         if (existingUser) {
@@ -28,7 +29,7 @@ exports.registerUser = async (req, res) => {
             username,
             email,
             password: hashedPassword,
-            userProfile: process.env.baseURL+ '/images/' + image,
+            userProfile:image,
             OauthId:null,
             authProviderL:username
         });

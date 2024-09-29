@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= blog ? blog.title : 'No Blog Found' %></title>
-    <link rel="icon" href="/images/Screenshot_2024-05-18_163234-removebg-preview.png" type="image/png">
+    <link rel="icon" href="https://res.cloudinary.com/diuy2xilf/image/upload/v1727609897/Screenshot_2024-05-18_163234-removebg-preview_l3x0bf.png" type="image/png">
     <link rel="stylesheet" href="/singleBlog.css"> <!-- Link to the scoped blog CSS -->
 </head>
 <body>
@@ -18,7 +18,7 @@
     <div class="blog-page">
         <div class="blog-card">
             <div class="blog-image">
-                <img src="/images/<%= blog.image %>" alt="blog.image">
+                <img src="<%= blog.image %>" alt="<%=blog.image%>">
             </div>
             <div class="blog-content">
                 <h1 class="blog-title"><%= blog.title %></h1>

@@ -2,6 +2,8 @@ const { blogs, registers } = require("../model/index");
 const fs = require('fs'); // File System
 const { QueryTypes } = require('sequelize');
 const {sequelize}= require('../model/index');
+const cloudinary = require('cloudinary').v2;
+
 
 // Create Render Request
 exports.createRender = (req, res) => {
@@ -14,8 +16,11 @@ exports.createRender = (req, res) => {
 exports.createBlog = async (req, res) => {
     try {
         const userId = req.user.id; // Coming from the middleware (isAuthenticated.js)
+        console.error("User ID: " + userId);
         const { title, subtitle, description } = req.body;
-        const image = req.file ? req.file.filename : null;
+        // const image = req.file ? req.file.filename : null; ( in localserver we are storing the images name in the database)
+        const image = req.file ? req.file.path : null; // ( in Cloudinary we are storing the images path in the cloudinary server)
+        
 
         // 1. Create user-specific table dynamically
         await sequelize.query(
@@ -28,7 +33,7 @@ exports.createBlog = async (req, res) => {
                 image VARCHAR(255),
                 FOREIGN KEY (registerId) REFERENCES registers(id)
             )`,
-            { type: QueryTypes.CREATE } // Use RAW type instead of CREATE, as Sequelize doesn't have QueryTypes.CREATE
+            { type: QueryTypes.CREATE }
         );
 
         // 2. Insert data into user's blog table
@@ -54,7 +59,7 @@ exports.createBlog = async (req, res) => {
         res.redirect('/');
     } catch (err) {
         console.error("Error creating blog: " + err.message);
-        req.flash('error', 'Something Went Wrong');
+        req.flash('error', 'Something Went Wrong.ok');
         res.redirect('/create');
     }
 };
@@ -114,12 +119,24 @@ exports.deleteBlog = async (req, res) => {
         req.flash('success', 'Blog deleted successfully');
 
         // Assuming image filename is stored in blogInUserTable[0].image
-        const imagePath = `public/images/${blogInUserTable[0].image}`;
-        fs.unlink(imagePath, (err) => {
-            if (err) {
-                console.error("Error deleting image: " + err.message);
+        // const imagePath = `public/images/${blogInUserTable[0].image}`;
+        // fs.unlink(imagePath, (err) => {
+        //     if (err) {
+        //         console.error("Error deleting image: " + err.message);
+        //     } else {
+        //         console.log("Image deleted successfully");
+        //     }
+        // }); ( This was the iamge removing from the local server)
+        // (The image is stored in the cloudinary server so we have to remove the image from the cloudinary server)
+        console.log("Image Path: " + blogInUserTable[0].image);
+        const imageId = blogInUserTable[0].image.split('/').slice(-2).join('/').split('.')[0].replace(/%20/g, ' ');
+        console.error("Image ID: " + imageId);
+        await cloudinary.uploader.destroy(imageId, (error, result) => {
+            if (error) {
+                console.error("Error deleting image: " + error.message);
+                req.flash('error', 'Error deleting image');
             } else {
-                console.log("Image deleted successfully");
+                console.log("Image deleted successfully",result);
             }
         });
 
@@ -153,25 +170,33 @@ exports.editBlogRender = async (req, res) => {
 // Edit Blog Request
 exports.editBlog = async (req, res) => {
     try {
-        const { title, subtitle, description } = req.body;
-        const userId = req.user.id; // From middleware isAuthenticated.js
+        const { title, subtitle, description } = req.body; // Get updated blog data from the request body
+        const userId = req.user.id; // Get user ID from the middleware
         const blogTitle = req.params.title; // Decode the title from the URL
-        const blogId = req.params.id;
-        const updateData = { title, subtitle, description };
+        const blogId = req.params.id; // Get blog ID from the URL
+        const updateData = { title, subtitle, description }; // Prepare data for update
 
         // Add image if a new file is uploaded
         if (req.file) {
-            updateData.image = req.file.filename;
+            // Store the new image path for updating the blog
+            // updateData.image = req.file.filename; // This is the new image path (stored in local server)
+            updateData.image = req.file.path; // This is the new image path (stored in Cloudinary)
 
             // Find the old blog data to delete the old image
             const oldData = await blogs.findByPk(blogId);
-            const imagePath = `public/images/${oldData.image}`;
+            const oldImagePath = oldData.image; // Get the old image URL
+console.error("Old Image Path: " + oldImagePath);
+            // Extract the public ID from the old image URL
+            const oldImagePublicId = oldImagePath.split('/').slice(-2).join('/').split('.')[0].replace(/%20/g, ' '); // Get public ID without extension
+            console.error("Old Image Public ID: " + oldImagePublicId);
 
-            fs.unlink(imagePath, (err) => {
-                if (err) {
-                    console.error("Error deleting old image: " + err.message);
+            // Delete the old image from Cloudinary
+            await cloudinary.uploader.destroy(oldImagePublicId, (error, result) => {
+                if (error) {
+                    console.error("Error deleting old image: " + error.message);
+                    req.flash('error', 'Error deleting old image');
                 } else {
-                    console.log("Old image deleted successfully");
+                    console.log("Old image deleted successfully", result);
                 }
             });
         }
@@ -187,6 +212,7 @@ exports.editBlog = async (req, res) => {
             ? [title, subtitle, description, updateData.image, userId, blogTitle] 
             : [title, subtitle, description, userId, blogTitle];
 
+        // Execute the update query
         await sequelize.query(query, {
             type: QueryTypes.UPDATE,
             replacements: replacements
@@ -195,6 +221,7 @@ exports.editBlog = async (req, res) => {
         // Update the blog in the global blogs table
         await blogs.update(updateData, { where: { id: blogId } });
 
+        // Set success flash message and redirect
         req.flash('success', 'Blog updated successfully');
         res.redirect('/');
     } catch (err) {
@@ -203,6 +230,7 @@ exports.editBlog = async (req, res) => {
         res.redirect(`/edit/${req.params.id}`);
     }
 };
+
 
 
 // Handle My Blogs Page
