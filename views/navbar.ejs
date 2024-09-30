@@ -1,63 +1,80 @@
 <nav class="navbar">
-    <a href="https://www.sudipsharma.com.np/search/label/Node%20Js" class="logo">Sudip Sharma Blog</a>
+    <div class="logo-container">
+        <a href="/" class="logo">
+            <img src="https://res.cloudinary.com/diuy2xilf/image/upload/v1727609897/Screenshot_2024-05-18_163234-removebg-preview_l3x0bf.png" alt="Logo" class="logo-img">
+        </a>
+    </div>
     <ul class="nav-links">
         <li><a href="/">Home</a></li>
-        <% if (isLoggedIn) { %> <!-- Use <% %> for logic -->
+        <% if (isLoggedIn) { %>
             <li><a href="/create">Create Blog</a></li>
             <li><a href="/myBlogs">My Blogs</a></li>
             <li><a href="/logout">LogOut</a></li>
-        <% } else { %> <!-- Correct EJS syntax for else -->
+        <% } else { %>
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
-        <% } %> <!-- Close the if-else block -->
+        <% } %>
     </ul>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </nav>
+
 <style>
-/* Style for the logo link */
-.navbar .logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #ff6600; /* Brighter color for the logo */
-    text-decoration: none;
-    padding: 10px 20px;
-    font-family: 'Poppins', sans-serif; /* Modern font */
-    transition: color 0.3s ease; /* Smooth color transition */
-    letter-spacing: 1px;
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Add hover effect for logo */
-.navbar .logo:hover {
-    color: #ff3300; /* Slight color change on hover */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
-}
-
-/* Navbar styles */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1f2937; /* Darker background for contrast */
+    background-color: #1f2937;
     padding: 15px 30px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    position: relative;
+}
+
+/* Logo container with image and text */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 150px; /* Adjust size of logo */
+    height: auto;
+    margin-right: 10px;
+}
+
+.site-name {
+    font-size: 24px;
+    color: #ff6600;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 /* Style for nav links */
-.navbar .nav-links {
+.nav-links {
     list-style-type: none;
     display: flex;
-    gap: 30px; /* Larger gap for spacing */
+    gap: 30px;
 }
 
-/* Style for each nav item */
-.navbar .nav-links li {
+.nav-links li {
     display: inline;
 }
 
-/* Style for each nav link */
-.navbar .nav-links a {
+.nav-links a {
     text-decoration: none;
-    color: #ffffff; /* White text color for better readability */
+    color: #ffffff;
     font-size: 18px;
     font-weight: 500;
     padding: 10px 15px;
@@ -66,37 +83,80 @@
     border-radius: 5px;
 }
 
-/* Hover effect for nav links */
-.navbar .nav-links a:hover {
-    color: #ff6600; /* Orange hover color */
-    background-color: rgba(255, 255, 255, 0.1); /* Background hover effect */
-    transform: translateY(-3px); /* Lifts link on hover */
+.nav-links a:hover {
+    color: #ff6600;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
 }
 
-/* Add an active link style */
-.navbar .nav-links a.active {
-    background-color: #ff6600; /* Highlight the active page */
+.nav-links a.active {
+    background-color: #ff6600;
     color: #fff;
     border-radius: 5px;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column; /* Stack the navbar in smaller screens */
-        padding: 20px;
-    }
-
-    .navbar .nav-links {
+    .nav-links {
+        position: absolute;
+        top: 100px;
+        right: 0px;
+        background-color: #1167e0;
+        width: 30%;
+        height: 20vh;
         flex-direction: column;
-        gap: 15px; /* Reduce the gap between items */
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        gap: 20px;
     }
 
-    .navbar .nav-links a {
-        font-size: 20px; /* Increase font size for better readability */
-        padding: 15px;
-        text-align: center; /* Center links */
+    .nav-links.show {
+        transform: translateX(0%);
+    }
+
+    .hamburger {
+        display: flex;
     }
 }
 
+/* Hamburger Menu Animation */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
 </style>
+
+<script>
+    // JavaScript for hamburger toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+        hamburger.classList.toggle('active');
+    });
+</script>

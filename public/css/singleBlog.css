@@ -1,29 +1,41 @@
-/* Blog Page Scoped Styling */
-.blog-page {
-    /* Body Styling */
+/* General Styling */
+body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
     margin: 0;
-    padding-top: 100px; /* Space for the navbar */
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f4f8; /* Subtle background color */
+    line-height: 1.6;
+}
+
+/* Blog Page Styling */
+.blog-page {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    padding: 20px;
     min-height: 100vh;
+    background: linear-gradient(135deg, #e3f2fd, #f5f7fa); /* Soft gradient background */
 }
 
-/* Isolating the Blog Section */
+/* Blog Card */
 .blog-page .blog-card {
-    width: 90%;
-    max-width: 800px;
+    width: 100%;
+    max-width: 900px; /* Increased max-width for larger screens */
     background-color: #ffffff;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin-top: 20px;
+    overflow: hidden;
 }
 
-/* Blog Image Styling */
+.blog-page .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Blog Image */
 .blog-page .blog-image img {
     width: 100%;
     height: auto;
@@ -31,104 +43,125 @@
     border-bottom: 5px solid #ff6600;
 }
 
-/* Blog Content Padding */
+/* Blog Content */
 .blog-page .blog-content {
-    padding: 30px;
+    padding: 25px;
 }
 
-/* Blog Title */
 .blog-page .blog-title {
-    font-size: 32px;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 600;
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
-/* Blog Subtitle */
 .blog-page .blog-subtitle {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #555;
     margin-bottom: 20px;
     text-align: center;
     font-style: italic;
 }
 
-/* Blog Description */
 .blog-page .blog-description {
-    font-size: 18px;
+    font-size: 1rem;
     line-height: 1.7;
     color: #666;
     margin-bottom: 30px;
+    text-align: justify;
 }
 
-/* Author and Email Styling */
+/* Author and Contact Info */
 .blog-page .blog-card p {
     color: #777;
-    font-size: 16px;
+    font-size: 0.9rem;
     margin: 5px 0;
     text-align: center;
 }
 
-/* Button Section */
+/* Blog Actions */
 .blog-page .blog-actions {
     display: flex;
-    justify-content: space-between;
-    padding: 20px 30px;
+    justify-content: space-around;
+    padding: 15px 20px;
     background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
 }
 
 /* Edit and Delete Buttons */
-.blog-page .blog-actions .delete-button, .blog-page .blog-actions .edit-button {
-    background-color: #ff4d4d;
+.blog-page .edit-button, .blog-page .delete-button {
+    background-color: #00b894;
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 50px;
+    border-radius: 30px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease;
+    text-align: center;
 }
 
-.blog-page .blog-actions .edit-button {
-    background-color: #00b894;
+.blog-page .delete-button {
+    background-color: #ff4d4d;
 }
 
-.blog-page .blog-actions .delete-button:hover {
-    background-color: #cc0000;
-}
-
-.blog-page .blog-actions .edit-button:hover {
+.blog-page .edit-button:hover {
     background-color: #009c7e;
 }
 
-/* Responsive Design for Blog Section */
+.blog-page .delete-button:hover {
+    background-color: #cc0000;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+    .blog-page {
+        padding: 10px;
+    }
+
+    .blog-page .blog-card {
+        margin-top: 15px;
+    }
+
     .blog-page .blog-content {
         padding: 20px;
     }
 
     .blog-page .blog-title {
-        font-size: 28px;
+        font-size: 1.8rem;
     }
 
     .blog-page .blog-subtitle {
-        font-size: 20px;
+        font-size: 1.2rem;
     }
 
     .blog-page .blog-description {
-        font-size: 16px;
+        font-size: 0.9rem;
     }
 
     .blog-page .blog-actions {
         flex-direction: column;
-        align-items: center;
+        gap: 10px;
     }
 
-    .blog-page .blog-actions .delete-button, .blog-page .blog-actions .edit-button {
+    .blog-page .edit-button, .blog-page .delete-button {
         width: 100%;
         text-align: center;
-        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-page .blog-title {
+        font-size: 1.5rem;
+    }
+
+    .blog-page .blog-subtitle {
+        font-size: 1rem;
+    }
+
+    .blog-page .blog-description {
+        font-size: 0.85rem;
     }
 }
