@@ -19,7 +19,7 @@ module.exports = {
     PASSWORD: process.env.DB_PASSWORD, // The database password (empty if not used)
     DB: process.env.DB_NAME,         // The name of the database
     dialect: "mysql",               // The dialect (in this case, MySQL)
-    PORT: 41980
+    PORT: process.env.DB_PORT,
     // The port to connect to the database (default for MySQL is 3306)
     //for online database port number is:41980
 
