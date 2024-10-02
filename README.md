@@ -19,6 +19,7 @@ This project is a simplified version of a **Content Management System (CMS)** bu
 - **Multer** - File upload
 - **Cloudinary** - Image hosting
 - **Nodemailer** - Email service for OTP
+- **Passport** - Google Login/Register
 
 ## Installation
 
