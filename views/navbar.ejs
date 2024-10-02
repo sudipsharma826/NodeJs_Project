@@ -1,10 +1,10 @@
 <nav class="navbar">
-    <div class="logo-container">
-        <a href="/" class="logo">
-            <img src="https://res.cloudinary.com/diuy2xilf/image/upload/v1727609897/Screenshot_2024-05-18_163234-removebg-preview_l3x0bf.png" alt="Logo" class="logo-img">
+    <div class="navbar__logo-container">
+        <a href="/" class="navbar__logo">
+            <img src="https://res.cloudinary.com/diuy2xilf/image/upload/v1727609897/Screenshot_2024-05-18_163234-removebg-preview_l3x0bf.png" alt="Logo" class="navbar__logo-img">
         </a>
     </div>
-    <ul class="nav-links">
+    <ul class="navbar__links">
         <li><a href="/">Home</a></li>
         <% if (isLoggedIn) { %>
             <li><a href="/create">Create Blog</a></li>
@@ -15,7 +15,7 @@
             <li><a href="/login">Login</a></li>
         <% } %>
     </ul>
-    <div class="hamburger">
+    <div class="navbar__hamburger">
         <span></span>
         <span></span>
         <span></span>
@@ -24,139 +24,106 @@
 
 <style>
 /* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar Styling */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1f2937;
-    padding: 15px 30px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    position: relative;
-}
-
-/* Logo container with image and text */
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    width: 150px; /* Adjust size of logo */
-    height: auto;
-    margin-right: 10px;
-}
-
-.site-name {
-    font-size: 24px;
-    color: #ff6600;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-/* Style for nav links */
-.nav-links {
-    list-style-type: none;
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links li {
-    display: inline;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 10px 15px;
-    position: relative;
-    transition: color 0.3s ease, transform 0.3s ease;
-    border-radius: 5px;
-}
-
-.nav-links a:hover {
-    color: #ff6600;
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-3px);
-}
-
-.nav-links a.active {
-    background-color: #ff6600;
+    padding: 1rem 2rem;
+    background-color: #333;
     color: #fff;
-    border-radius: 5px;
+    position: relative;
 }
 
-/* Hamburger Menu */
-.hamburger {
+.navbar__logo-container {
+    flex-shrink: 0;
+}
+
+.navbar__logo-img {
+    width: 120px;
+    transition: transform 0.3s ease;
+}
+
+.navbar__logo-img:hover {
+    transform: scale(1.1);
+}
+
+/* Links */
+.navbar__links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.navbar__links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar__links li a:hover {
+    color: #ffcc00;
+}
+
+/* Hamburger Menu for Mobile */
+.navbar__hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    gap: 5px;
 }
 
-.hamburger span {
+.navbar__hamburger span {
     width: 25px;
     height: 3px;
-    background-color: white;
-    margin: 4px 0;
-    transition: 0.3s;
+    background-color: #fff;
+    transition: all 0.3s ease;
 }
 
-/* Responsive Design */
+/* Mobile Navigation */
 @media (max-width: 768px) {
-    .nav-links {
+    .navbar__links {
         position: absolute;
-        top: 100px;
-        right: 0px;
-        background-color: #1167e0;
-        width: 30%;
-        height: 20vh;
+        top: 100%;
+        right: 0;
+        background-color: #333;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        gap: 20px;
+        width: 100%;
+        display: none;
+        text-align: center;
+        padding: 1rem 0;
     }
 
-    .nav-links.show {
-        transform: translateX(0%);
-    }
-
-    .hamburger {
+    .navbar__links.active {
         display: flex;
     }
-}
 
-/* Hamburger Menu Animation */
-.hamburger.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
+    .navbar__links li {
+        padding: 1rem 0;
+    }
 
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+    .navbar__hamburger {
+        display: flex;
+    }
 }
 </style>
 
 <script>
-    // JavaScript for hamburger toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+const hamburger = document.querySelector('.navbar__hamburger');
+const navLinks = document.querySelector('.navbar__links');
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-        hamburger.classList.toggle('active');
-    });
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
 </script>

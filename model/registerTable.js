@@ -1,3 +1,5 @@
+const e = require("connect-flash");
+
 const makeRegisterTable=(sequelize,DataTypes)=>{
     
         const register=sequelize.define("register",{//acutally table name is tables
@@ -32,6 +34,11 @@ const makeRegisterTable=(sequelize,DataTypes)=>{
             otpGeneratedTime:{
                 type:DataTypes.STRING,
                 allowNull:true,
+            },
+            role:{
+                type:DataTypes.STRING,
+                enum:['admin','user'],
+                defaultValue:'user',
             }
         });
         return register;

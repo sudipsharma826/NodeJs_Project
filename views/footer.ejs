@@ -1,0 +1,50 @@
+<style>
+    /* Footer Styling */
+    .footer {
+        background: linear-gradient(135deg, #333, #111);
+        color: #fff;
+        text-align: center;
+        padding: 1.5rem 0;
+        margin-top: 2rem;
+        position: relative;
+        width: 100%;
+        box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer__content p {
+        font-size: 1.2rem;
+        margin: 0;
+        letter-spacing: 0.5px;
+    }
+
+    .footer__content a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 2px;
+        transition: color 0.3s ease, border-bottom 0.3s ease;
+    }
+
+    .footer__content a:hover {
+        color: #fff;
+        border-bottom: 2px solid #ffcc00;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+        .footer {
+            padding: 1.5rem 0;
+        }
+
+        .footer__content p {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<footer class="footer">
+    <div class="footer__content">
+        <p>Developed by <a href="https://www.linkedin.com/in/sudipsharmanp/" target="_blank">Sudip Sharma</a></p>
+    </div>
+</footer>

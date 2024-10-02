@@ -19,20 +19,20 @@ const {
 } = require("../controller/blogController");
 const { isAuthenticated } = require("../middleware/isAuthenticated");
 const { validUser } = require("../middleware/vaildUser");
-
+const verifyRole = require("../middleware/verifyRole");
 
 
 // Create Blog Routes
 router.route('/create')
     .get(isAuthenticated, createRender)
-    .post(isAuthenticated, upload.single('image'),createBlog);
+    .post(isAuthenticated,verifyRole(['admin','user']), upload.single('image'),createBlog);
 
 // Single Blog Routes
 router.route('/blog/:id')
     .get(singleBlogRender);
 
 // Edit Blog Routes
-router.route('/edit/:id/').get(isAuthenticated, validUser, editBlogRender);
+router.route('/edit/:id/').get(isAuthenticated, validUser,editBlogRender);
 //Edit blog post route
 router.route('/edit/:id/:title').post(isAuthenticated, validUser, upload.single('image'), editBlog);
 

@@ -2,7 +2,7 @@ const { registers } = require("../model/index");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../service/nodemailer");
-const generator = require('generate-password');
+//const generator = require('generate-password');
 
 // Register Render Request
 exports.registerRender = (req, res) => {
