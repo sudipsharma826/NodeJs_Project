@@ -1,50 +1,52 @@
 <style>
     /* Footer Styling */
-    .footer {
-        background: linear-gradient(135deg, #333, #111);
-        color: #fff;
-        text-align: center;
-        padding: 1.5rem 0;
-        margin-top: 2rem;
-        position: relative;
-        width: 100%;
-        box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+    .unique-footer {
+        position: fixed; /* Keep the footer fixed at the bottom */
+        bottom: 0; /* Align it to the bottom of the page */
+        left: 0; /* Align to the left edge */
+        right: 0; /* Align to the right edge */
+        background: linear-gradient(135deg, #333, #111); /* Gradient background */
+        color: #fff; /* Text color */
+        text-align: center; /* Center align text */
+        padding: 1.5rem 0; /* Padding */
+        box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3); /* Box shadow for depth */
+        z-index: 1000; /* Ensure it's above other content */
     }
 
-    .footer__content p {
-        font-size: 1.2rem;
-        margin: 0;
-        letter-spacing: 0.5px;
+    .unique-footer__content p {
+        font-size: 1.2rem; /* Font size */
+        margin: 0; /* Remove default margin */
+        letter-spacing: 0.5px; /* Space out letters */
     }
 
-    .footer__content a {
-        color: #ffcc00;
-        text-decoration: none;
-        font-weight: 600;
-        border-bottom: 2px solid transparent;
-        padding-bottom: 2px;
-        transition: color 0.3s ease, border-bottom 0.3s ease;
+    .unique-footer__content a {
+        color: #ffcc00; /* Link color */
+        text-decoration: none; /* Remove underline */
+        font-weight: 600; /* Bold text */
+        border-bottom: 2px solid transparent; /* Bottom border */
+        padding-bottom: 2px; /* Padding below the text */
+        transition: color 0.3s ease, border-bottom 0.3s ease; /* Transition for hover effects */
     }
 
-    .footer__content a:hover {
-        color: #fff;
-        border-bottom: 2px solid #ffcc00;
+    .unique-footer__content a:hover {
+        color: #fff; /* Change color on hover */
+        border-bottom: 2px solid #ffcc00; /* Show underline on hover */
     }
 
     /* Responsive Styling */
     @media (max-width: 768px) {
-        .footer {
-            padding: 1.5rem 0;
+        .unique-footer {
+            padding: 1.5rem 0; /* Padding for smaller screens */
         }
 
-        .footer__content p {
-            font-size: 1rem;
+        .unique-footer__content p {
+            font-size: 1rem; /* Font size for smaller screens */
         }
     }
 </style>
 
-<footer class="footer">
-    <div class="footer__content">
+<footer class="unique-footer">
+    <div class="unique-footer__content">
         <p>Developed by <a href="https://www.linkedin.com/in/sudipsharmanp/" target="_blank">Sudip Sharma</a></p>
     </div>
 </footer>
