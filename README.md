@@ -48,10 +48,6 @@ This project is a simplified version of a **Content Management System (CMS)** bu
     npm start
     ```
 
-## Live Demo
-
-🔗 **Live Preview**: [Node.js CMS Live](https://www.nodeproject.sudipsharma.com.np/)
-
 ## Project Structure
 
 ```
