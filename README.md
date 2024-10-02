@@ -45,7 +45,7 @@ This project is a simplified version of a **Content Management System (CMS)** bu
 
 4. Run the app:
     ```bash
-    npm start
+    node app.js
     ```
 
 ## Project Structure
